@@ -16,7 +16,6 @@
         android:background="@color/cardview_dark_background"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:textDirection="rtl"
         android:padding="20dp"
         app:layout_constraintTop_toTopOf="parent" />
 

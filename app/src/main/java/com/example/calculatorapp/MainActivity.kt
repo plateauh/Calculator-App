@@ -2,6 +2,7 @@ package com.example.calculatorapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
@@ -17,6 +18,18 @@ class MainActivity : AppCompatActivity() {
         resultTextView = findViewById(R.id.result_tv)
         operationArray = arrayOf("", "", "")
         initiateButtons()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putStringArray("operationArray", operationArray)
+        outState.putString("resultTextView", resultTextView.text.toString())
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        operationArray = savedInstanceState.getStringArray("operationArray") as Array<String> // I'm not sure why
+        resultTextView.text = savedInstanceState.getString("resultTextView", "")
     }
 
     private fun initiateButtons() {
